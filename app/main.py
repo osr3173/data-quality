@@ -1,5 +1,5 @@
 from fastapi import FastAPI, UploadFile
-from app.checks import count_duplicates,find_type_mismatches
+from app.checks import count_duplicates,find_type_mismatches,find_outliers
 import pandas as pd
 
 app = FastAPI()
@@ -15,5 +15,6 @@ def upload_dataset(file: UploadFile):
         "columns": columns,
         "missing" : missing,
         "duplicates": count_duplicates(df),
-        "type_mismatches": find_type_mismatches(df)
+        "type_mismatches": find_type_mismatches(df),
+        "outliers": find_outliers(df)
     }
