@@ -1,4 +1,5 @@
 from fastapi import FastAPI, UploadFile
+from app.checks import count_duplicates
 import pandas as pd
 
 app = FastAPI()
@@ -12,5 +13,6 @@ def upload_dataset(file: UploadFile):
         "filename": file.filename,
         "rows": rows,
         "columns": columns,
-        "missing" : missing
+        "missing" : missing,
+        "duplicates": count_duplicates(df)
     }
