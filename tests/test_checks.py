@@ -10,3 +10,13 @@ def load_df():
 def test_count_duplicates():
     df = load_df()
     assert count_duplicates(df) == 1
+
+def test_find_type_mismatches():
+    df = load_df()
+    mismatches = find_type_mismatches(df)
+    assert mismatches == {"amount": 1}
+
+def test_find_outliers():
+    df = load_df()
+    outliers = find_outliers(df)
+    assert outliers == {"amount": 1}
